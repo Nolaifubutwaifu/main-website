@@ -110,7 +110,7 @@
   /* ---- project list ---- */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 1px;
     background: var(--line);
     border: 1px solid var(--line);
@@ -179,9 +179,9 @@
   /* soon / non-link cards */
   .card.soon {
     cursor: default;
-    background: transparent;
+    background: var(--ink-2);
   }
-  .card.soon:hover { background: transparent; }
+  .card.soon:hover { background: var(--ink-2); }
   .card.soon h2, .card.soon .card-host { color: var(--frost-dim); opacity: 0.45; }
   .card.soon p { opacity: 0.35; }
 
@@ -246,15 +246,50 @@
       <span class="card-host">book-downloader<span class="arrow">→</span></span>
     </a>
 
-    <a class="card reveal" style="animation-delay:380ms" href="https://pdf-reader.taigaprojects.space">
+    <a class="card reveal" style="animation-delay:360ms" href="https://pdf-reader.taigaprojects.space">
       <span class="card-idx">02</span>
       <h2>PDF Reader</h2>
       <p>A calmer way to read, annotate and move through long PDFs.</p>
       <span class="card-host">pdf-reader<span class="arrow">→</span></span>
     </a>
 
-    <div class="card soon reveal" style="animation-delay:440ms">
+    <a class="card reveal" style="animation-delay:400ms" href="https://labyrinth.taigaprojects.space">
       <span class="card-idx">03</span>
+      <h2>Labyrinth</h2>
+      <p>An experiment in getting pleasantly lost.</p>
+      <span class="card-host">labyrinth<span class="arrow">→</span></span>
+    </a>
+
+    <a class="card reveal" style="animation-delay:440ms" href="https://couple-app.taigaprojects.space">
+      <span class="card-idx">04</span>
+      <h2>Couple App</h2>
+      <p>Little things kept in sync between two people.</p>
+      <span class="card-host">couple-app<span class="arrow">→</span></span>
+    </a>
+
+    <a class="card reveal" style="animation-delay:480ms" href="https://overcooked.taigaprojects.space">
+      <span class="card-idx">05</span>
+      <h2>Overcooked</h2>
+      <p>Kitchen chaos, organised.</p>
+      <span class="card-host">overcooked<span class="arrow">→</span></span>
+    </a>
+
+    <a class="card reveal" style="animation-delay:520ms" href="https://inventory-app.taigaprojects.space">
+      <span class="card-idx">06</span>
+      <h2>Inventory</h2>
+      <p>Track stock and know what's actually on the shelf.</p>
+      <span class="card-host">inventory-app<span class="arrow">→</span></span>
+    </a>
+
+    <a class="card reveal" style="animation-delay:560ms" href="https://email-outreach.taigaprojects.space">
+      <span class="card-idx">07</span>
+      <h2>Email Outreach</h2>
+      <p>Write, send and follow up without the enterprise bloat.</p>
+      <span class="card-host">email-outreach<span class="arrow">→</span></span>
+    </a>
+
+    <div class="card soon reveal" style="animation-delay:600ms">
+      <span class="card-idx">08</span>
       <h2>Next one</h2>
       <p>Something is being built here.</p>
       <span class="card-host">coming soon</span>
@@ -262,7 +297,7 @@
 
   </div>
 
-  <footer class="reveal" style="animation-delay:520ms">
+  <footer class="reveal" style="animation-delay:660ms">
     <span>Built and maintained by hand.</span>
   </footer>
 </main>
