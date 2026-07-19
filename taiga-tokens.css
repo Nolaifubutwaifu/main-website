@@ -1,0 +1,315 @@
+/* ═══════════════════════════════════════════════════════════════
+   Taiga Projects — shared design tokens
+   Source of truth: Claude Design "Taiga Design Reference"
+   Direction: "Golden Hour" — warm, cinematic, editorial.
+
+   Copy this file verbatim into every taigaprojects.space subdomain
+   so the whole family stays in sync. Do not fork the values.
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesque:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* ---- Warm neutral ramp (the brand's spine) ---- */
+  --ink-950: #17120E;
+  --ink-900: #221A12;
+  --ink-800: #2E2418;
+  --ink-700: #3D2E20;
+  --ink-600: #5A4634;
+  --ink-500: #7A6248;
+  --ink-400: #9E8468;
+  --ink-300: #C3AC92;
+  --ink-200: #DDCDB8;
+  --ink-100: #ECE2D4;
+  --ink-50:  #F6F0E7;
+  --paper:   #FBF7F0;
+  --white:   #FFFFFF;
+
+  /* ---- Accent: golden-hour amber ---- */
+  --amber-700: #A8521F;
+  --amber-600: #C8642B;
+  --amber-500: #E07A3C;
+  --amber-400: #ED915A;
+  --amber-300: #F4B582;
+  --amber-100: #FBE4CF;
+  --gold-400:  #E3B25A;
+
+  /* ---- Semantic status (warm/earthy) ---- */
+  --moss-500:  #6E8B3D;
+  --moss-100:  #E7EDD6;
+  --honey-500: #E3A23C;
+  --honey-100: #FBEDCF;
+  --rust-500:  #C7472F;
+  --rust-100:  #F7DCD3;
+
+  /* ---- Semantic aliases ---- */
+  --bg:              var(--paper);
+  --surface:         var(--white);
+  --surface-sunken:  var(--ink-50);
+  --surface-inverse: var(--ink-950);
+
+  --text-primary:   var(--ink-900);
+  --text-secondary: var(--ink-600);
+  --text-muted:     var(--ink-400);
+  --text-on-dark:   var(--ink-50);
+  --text-on-accent: var(--paper);
+  --text-link:      var(--amber-600);
+
+  --border:         var(--ink-200);
+  --border-strong:  var(--ink-300);
+  --border-inverse: rgba(246, 240, 231, 0.16);
+
+  --accent:       var(--amber-500);
+  --accent-hover: var(--amber-600);
+  --accent-press: var(--amber-700);
+  --accent-soft:  var(--amber-100);
+  --accent-text:  var(--amber-700);
+  --focus-ring:   rgba(224, 122, 60, 0.45);
+
+  /* ---- Families ---- */
+  --font-display: 'Libre Caslon Display', Georgia, 'Times New Roman', serif;
+  --font-serif:   'Libre Caslon Text', Georgia, serif;
+  --font-sans:    'Hanken Grotesque', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ---- Type scale (1.250 major third) ---- */
+  --text-3xs: 0.694rem;
+  --text-2xs: 0.75rem;
+  --text-xs:  0.833rem;
+  --text-sm:  0.9375rem;
+  --text-md:  1rem;
+  --text-lg:  1.25rem;
+  --text-xl:  1.563rem;
+  --text-2xl: 1.953rem;
+  --text-3xl: 2.441rem;
+  --text-4xl: 3.052rem;
+  --text-5xl: 3.815rem;
+  --text-6xl: 4.768rem;
+
+  /* ---- Weights ---- */
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+  --fw-black:    800;
+
+  /* ---- Line heights ---- */
+  --lh-tight:   1.05;
+  --lh-snug:    1.2;
+  --lh-normal:  1.5;
+  --lh-relaxed: 1.65;
+
+  /* ---- Letter spacing ---- */
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+  --tracking-label:  0.18em;
+
+  /* ---- Spacing (4px base) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  /* ---- Radius ---- */
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   18px;
+  --radius-full: 999px;
+
+  /* ---- Shadows (warm-tinted, light from above) ---- */
+  --shadow-xs: 0 1px 2px rgba(34, 26, 18, 0.06);
+  --shadow-sm: 0 2px 6px rgba(34, 26, 18, 0.08);
+  --shadow-md: 0 8px 20px rgba(34, 26, 18, 0.10);
+  --shadow-lg: 0 18px 44px rgba(34, 26, 18, 0.16);
+  --shadow-accent: 0 10px 28px rgba(200, 100, 43, 0.28);
+
+  /* ---- Motion (calm, no bounce) ---- */
+  --ease-out:   cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-inout: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:   140ms;
+  --dur-base:   220ms;
+  --dur-slow:   420ms;
+
+  /* ---- Layout ---- */
+  --container:        1120px;
+  --container-narrow: 680px;
+  --gutter:           64px;
+  --header-h:         64px;
+}
+
+@media (max-width: 720px) {
+  :root { --gutter: 24px; }
+}
+
+/* ═══ base ═══ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--lh-normal);
+  color: var(--text-primary);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+p { margin: 0; text-wrap: pretty; }
+
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+::selection { background: var(--amber-100); color: var(--ink-900); }
+
+:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+
+/* Uppercase eyebrow / kicker */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-2xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+
+/* ═══ shared chrome — identical on every subdomain ═══ */
+
+.taiga-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+  padding: 0 var(--gutter);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.taiga-header.on-dark {
+  background: var(--ink-950);
+  border-bottom-color: var(--border-inverse);
+}
+
+.taiga-brand { display: flex; align-items: baseline; gap: 14px; }
+.taiga-brand a { text-decoration: none; }
+.taiga-brand .wordmark {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  letter-spacing: var(--tracking-tight);
+  color: var(--ink-900);
+}
+.taiga-header.on-dark .wordmark { color: var(--ink-50); }
+.taiga-brand .rule {
+  width: 1px; height: 20px;
+  background: var(--border-strong);
+  align-self: center;
+}
+.taiga-header.on-dark .rule { background: var(--border-inverse); }
+.taiga-brand .crumb {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+.taiga-header.on-dark .crumb { color: var(--ink-300); }
+
+.taiga-nav { display: flex; align-items: center; gap: 22px; }
+.taiga-nav .back {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--dur-base) var(--ease-out);
+}
+.taiga-nav .back:hover { color: var(--accent-text); text-decoration: none; }
+.taiga-header.on-dark .back { color: var(--ink-300); }
+.taiga-header.on-dark .back:hover { color: var(--amber-300); }
+
+.taiga-chip {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--amber-700);
+  background: var(--accent-soft);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.taiga-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding: 26px var(--gutter);
+  background: var(--ink-950);
+}
+.taiga-footer .made {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--ink-100);
+  letter-spacing: var(--tracking-tight);
+}
+.taiga-footer .home {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--amber-300);
+  text-decoration: none;
+}
+.taiga-footer .home:hover { color: var(--amber-100); }
+
+/* The chip is the first thing to hide on narrow screens. */
+@media (max-width: 720px) {
+  .taiga-chip { display: none; }
+}
+
+/* ═══ buttons ═══ */
+
+.taiga-btn {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: var(--text-sm);
+  color: var(--text-on-accent);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 13px 24px;
+  cursor: pointer;
+  box-shadow: var(--shadow-accent);
+  transition: background var(--dur-base) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+.taiga-btn:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+.taiga-btn:active { background: var(--accent-press); transform: translateY(1px); }
+
+.taiga-btn.secondary {
+  color: var(--ink-900);
+  background: var(--surface);
+  border-color: var(--border-strong);
+  box-shadow: none;
+}
+.taiga-btn.secondary:hover { background: var(--surface-sunken); border-color: var(--ink-400); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+}

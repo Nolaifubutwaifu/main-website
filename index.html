@@ -4,288 +4,224 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Taiga Projects</title>
-<meta name="description" content="A collection of small tools and experiments living on taigaprojects.space" />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>" />
+<meta name="description" content="A quiet stretch of the internet where I keep the tools I build. Small, useful, mostly free." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2317120E'/><text y='.9em' font-size='88' x='50%25' text-anchor='middle' fill='%23E07A3C' font-family='Georgia,serif'>T</text></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="taiga-tokens.css" />
 <style>
-  :root {
-    --ink:       #050807;
-    --ink-2:     #0b100e;
-    --spruce:    #16241d;
-    --moss:      #7fa88c;
-    --frost:     #d8e5dd;
-    --frost-dim: #8a9a91;
-    --ice:       #9fe6c4;
-    --line:      rgba(127, 168, 140, 0.16);
-    --display:   'Fraunces', Georgia, serif;
-    --mono:      'IBM Plex Mono', ui-monospace, monospace;
+  /* ── hero ─────────────────────────────────────────────── */
+  .hero {
+    background: var(--ink-950);
+    color: var(--ink-50);
+    padding: 96px var(--gutter) 84px;
+  }
+  .hero-inner { max-width: var(--container); margin: 0 auto; }
+
+  .hero .domain {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--amber-300);
+    margin-bottom: 30px;
   }
 
-  * { box-sizing: border-box; }
+  .hero h1 {
+    font-size: var(--text-5xl);
+    line-height: 1.02;
+    margin: 0 0 20px;
+    color: var(--ink-50); /* base.css defaults h1 to dark ink */
+  }
+  .hero h1 em { color: var(--amber-400); font-style: italic; }
 
-  html { -webkit-text-size-adjust: 100%; }
-
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background:
-      radial-gradient(120% 80% at 12% -10%, #12261d 0%, transparent 55%),
-      radial-gradient(90% 60% at 95% 0%, #0d1c2a 0%, transparent 50%),
-      var(--ink);
-    color: var(--frost);
-    font-family: var(--mono);
-    font-size: 15px;
-    line-height: 1.6;
-    overflow-x: hidden;
+  .hero .lead {
+    font-size: var(--text-lg);
+    line-height: 1.5;
+    color: var(--ink-200);
+    max-width: 52ch;
   }
 
-  /* grain overlay */
-  body::after {
-    content: "";
-    position: fixed;
-    inset: -50%;
-    pointer-events: none;
-    z-index: 3;
-    opacity: 0.035;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* ── index of tools ───────────────────────────────────── */
+  .index {
+    background: var(--paper);
+    padding: 20px var(--gutter) 72px;
   }
+  .index-inner { max-width: var(--container); margin: 0 auto; }
 
-  /* faint horizon ridge */
-  .ridge {
-    position: fixed;
-    left: 0; right: 0; bottom: 0;
-    height: 42vh;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.5;
-  }
-
-  .wrap {
-    position: relative;
-    z-index: 2;
-    max-width: 940px;
-    margin: 0 auto;
-    padding: clamp(4rem, 12vh, 9rem) clamp(1.25rem, 5vw, 3rem) 6rem;
-  }
-
-  /* ---- header ---- */
-  .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--moss);
-    margin: 0 0 1.75rem;
-  }
-  .eyebrow::before {
-    content: "";
-    display: inline-block;
-    width: 28px; height: 1px;
-    background: var(--moss);
-    vertical-align: middle;
-    margin-right: 0.9rem;
-    opacity: 0.6;
-  }
-
-  h1 {
-    font-family: var(--display);
-    font-weight: 300;
-    font-size: clamp(3rem, 11vw, 6.5rem);
-    line-height: 0.92;
-    letter-spacing: -0.03em;
-    margin: 0 0 1.5rem;
-  }
-  h1 em {
-    font-style: italic;
-    color: var(--ice);
-  }
-
-  .lede {
-    max-width: 46ch;
-    color: var(--frost-dim);
-    margin: 0 0 clamp(3.5rem, 9vh, 6rem);
-  }
-
-  /* ---- project list ---- */
-  .grid {
+  .row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
-  }
-
-  .card {
-    position: relative;
-    display: block;
-    padding: 1.9rem 1.75rem 1.75rem;
-    background: var(--ink-2);
+    grid-template-columns: 44px 1fr auto;
+    align-items: center;
+    gap: 24px;
+    padding: 26px 16px;
+    margin: 0 -16px;
+    border-bottom: 1px solid var(--border);
     text-decoration: none;
     color: inherit;
-    overflow: hidden;
-    transition: background 280ms ease;
+    transition: background var(--dur-base) var(--ease-out);
   }
-  .card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(150deg, rgba(159, 230, 196, 0.09), transparent 60%);
-    opacity: 0;
-    transition: opacity 320ms ease;
-  }
-  .card:hover, .card:focus-visible { background: var(--spruce); outline: none; }
-  .card:hover::before, .card:focus-visible::before { opacity: 1; }
-  .card:focus-visible { box-shadow: inset 0 0 0 1px var(--ice); }
+  .row:hover { text-decoration: none; background: var(--surface-sunken); }
 
-  .card-idx {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--moss);
-    opacity: 0.7;
+  .row .num {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
   }
 
-  .card h2 {
-    position: relative;
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: 1.55rem;
-    letter-spacing: -0.015em;
-    margin: 0.6rem 0 0.5rem;
+  .row .name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    letter-spacing: var(--tracking-tight);
+    color: var(--ink-900);
+    margin-bottom: 4px;
   }
 
-  .card p {
-    position: relative;
-    margin: 0 0 1.6rem;
-    color: var(--frost-dim);
-    font-size: 13.5px;
-    max-width: 32ch;
+  .row .desc {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    max-width: 56ch;
   }
 
-  .card-host {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 0.55rem;
-    font-size: 12px;
-    color: var(--moss);
+  .row .slug {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--amber-600);
+    white-space: nowrap;
   }
-  .card-host .arrow {
-    transition: transform 280ms cubic-bezier(.2,.8,.2,1);
+  .row .slug .arrow {
+    display: inline-block;
+    transition: transform var(--dur-base) var(--ease-out);
   }
-  .card:hover .card-host { color: var(--ice); }
-  .card:hover .arrow { transform: translateX(5px); }
+  .row:hover .slug { color: var(--amber-700); }
+  .row:hover .slug .arrow { transform: translateX(4px); }
 
-  footer {
-    margin-top: 5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--line);
-    font-size: 12px;
-    color: var(--frost-dim);
-    opacity: 0.65;
+  /* ── responsive ───────────────────────────────────────── */
+  @media (max-width: 720px) {
+    .hero { padding: 56px var(--gutter) 48px; }
+    /* Display steps down one rung; body never below 15px. */
+    .hero h1 { font-size: var(--text-3xl); }
+    .hero .lead { font-size: var(--text-md); }
+
+    /* Rows drop the trailing slug under the title. */
+    .row {
+      grid-template-columns: 32px 1fr;
+      gap: 16px;
+      padding: 20px 0;
+    }
+    .row .name { font-size: var(--text-xl); }
+    .row .slug { grid-column: 2; margin-top: 8px; }
   }
 
-  /* ---- entrance ---- */
+  /* ── entrance ─────────────────────────────────────────── */
   .reveal {
     opacity: 0;
-    transform: translateY(14px);
-    animation: rise 900ms cubic-bezier(.2,.75,.2,1) forwards;
+    transform: translateY(10px);
+    animation: rise var(--dur-slow) var(--ease-out) forwards;
   }
   @keyframes rise { to { opacity: 1; transform: none; } }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { animation: none; opacity: 1; transform: none; }
-    * { transition-duration: 1ms !important; }
-  }
 </style>
 </head>
 <body>
 
-<svg class="ridge" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
-  <path d="M0 400V250l60-40 45 30 70-70 55 45 80-85 60 60 75-55 90 80 65-50 70 40 85-70 60 55 80-45 70 60 60-35 90 70 65-40 65 55v170z"
-        fill="#0d1712"/>
-  <path d="M0 400V310l80-45 70 40 60-55 90 60 70-35 85 55 60-40 95 65 70-45 80 50 70-30 90 55 75-40 80 45 70-25 95 60v85z"
-        fill="#0a1210"/>
-</svg>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="domain reveal" style="animation-delay:40ms">taigaprojects.space</div>
+    <h1 class="reveal" style="animation-delay:100ms">Taiga <em>Projects</em></h1>
+    <p class="lead reveal" style="animation-delay:160ms">
+      A quiet stretch of the internet where I keep the tools I build. Small, useful,
+      mostly free. Each one lives on its own subdomain.
+    </p>
+  </div>
+</header>
 
-<main class="wrap">
-  <p class="eyebrow reveal" style="animation-delay:60ms">taigaprojects.space</p>
+<main class="index">
+  <div class="index-inner">
 
-  <h1 class="reveal" style="animation-delay:140ms">Taiga<br /><em>Projects</em></h1>
+    <!-- ─────────────────────────────────────────────────────────
+         ADD A PROJECT: copy one <a class="row"> block, bump the
+         number, and change the href, name, description and slug.
+         ───────────────────────────────────────────────────────── -->
 
-  <p class="lede reveal" style="animation-delay:220ms">
-    A quiet stretch of the internet where I keep the tools I build. Small, useful,
-    mostly free. Each one lives on its own subdomain.
-  </p>
-
-  <!-- ─────────────────────────────────────────────────────────────
-       ADD A PROJECT: copy one <a class="card"> block, change the
-       href, number, title, blurb, and hostname. That's it.
-       ───────────────────────────────────────────────────────────── -->
-  <div class="grid">
-
-    <a class="card reveal" style="animation-delay:320ms" href="https://book-downloader.taigaprojects.space">
-      <span class="card-idx">01</span>
-      <h2>Book Downloader</h2>
-      <p>Search and pull down ebooks in the format you actually want.</p>
-      <span class="card-host">book-downloader<span class="arrow">→</span></span>
+    <a class="row reveal" style="animation-delay:220ms" href="https://book-downloader.taigaprojects.space">
+      <span class="num">01</span>
+      <span>
+        <span class="name">Book Downloader</span>
+        <span class="desc">Search and pull down ebooks in the format you actually want.</span>
+      </span>
+      <span class="slug">book-downloader <span class="arrow">→</span></span>
     </a>
 
-    <a class="card reveal" style="animation-delay:360ms" href="https://pdf-reader.taigaprojects.space">
-      <span class="card-idx">02</span>
-      <h2>PDF Reader</h2>
-      <p>A calmer way to read, annotate and move through long PDFs.</p>
-      <span class="card-host">pdf-reader<span class="arrow">→</span></span>
+    <a class="row reveal" style="animation-delay:260ms" href="https://pdf-reader.taigaprojects.space">
+      <span class="num">02</span>
+      <span>
+        <span class="name">PDF Reader</span>
+        <span class="desc">A calmer way to read, annotate and move through long PDFs.</span>
+      </span>
+      <span class="slug">pdf-reader <span class="arrow">→</span></span>
     </a>
 
-    <a class="card reveal" style="animation-delay:400ms" href="https://labyrinth.taigaprojects.space">
-      <span class="card-idx">03</span>
-      <h2>Labyrinth</h2>
-      <p>An experiment in getting pleasantly lost.</p>
-      <span class="card-host">labyrinth<span class="arrow">→</span></span>
+    <a class="row reveal" style="animation-delay:300ms" href="https://labyrinth.taigaprojects.space">
+      <span class="num">03</span>
+      <span>
+        <span class="name">Labyrinth</span>
+        <span class="desc">An experiment in getting pleasantly lost.</span>
+      </span>
+      <span class="slug">labyrinth <span class="arrow">→</span></span>
     </a>
 
-    <a class="card reveal" style="animation-delay:440ms" href="https://couple-app.taigaprojects.space">
-      <span class="card-idx">04</span>
-      <h2>Couple App</h2>
-      <p>Little things kept in sync between two people.</p>
-      <span class="card-host">couple-app<span class="arrow">→</span></span>
+    <a class="row reveal" style="animation-delay:340ms" href="https://couple-app.taigaprojects.space">
+      <span class="num">04</span>
+      <span>
+        <span class="name">Couple App</span>
+        <span class="desc">Little things kept in sync between two people.</span>
+      </span>
+      <span class="slug">couple-app <span class="arrow">→</span></span>
     </a>
 
-    <a class="card reveal" style="animation-delay:480ms" href="https://overcooked.taigaprojects.space">
-      <span class="card-idx">05</span>
-      <h2>Overcooked</h2>
-      <p>Kitchen chaos, organised.</p>
-      <span class="card-host">overcooked<span class="arrow">→</span></span>
+    <a class="row reveal" style="animation-delay:380ms" href="https://overcooked.taigaprojects.space">
+      <span class="num">05</span>
+      <span>
+        <span class="name">Overcooked</span>
+        <span class="desc">Kitchen chaos, organised.</span>
+      </span>
+      <span class="slug">overcooked <span class="arrow">→</span></span>
     </a>
 
-    <a class="card reveal" style="animation-delay:520ms" href="https://inventory-app.taigaprojects.space">
-      <span class="card-idx">06</span>
-      <h2>Inventory</h2>
-      <p>Track stock and know what's actually on the shelf.</p>
-      <span class="card-host">inventory-app<span class="arrow">→</span></span>
+    <a class="row reveal" style="animation-delay:420ms" href="https://inventory-app.taigaprojects.space">
+      <span class="num">06</span>
+      <span>
+        <span class="name">Inventory</span>
+        <span class="desc">Track stock and know what's actually on the shelf.</span>
+      </span>
+      <span class="slug">inventory-app <span class="arrow">→</span></span>
     </a>
 
-    <a class="card reveal" style="animation-delay:560ms" href="https://email-outreach.taigaprojects.space">
-      <span class="card-idx">07</span>
-      <h2>Email Outreach</h2>
-      <p>Write, send and follow up without the enterprise bloat.</p>
-      <span class="card-host">email-outreach<span class="arrow">→</span></span>
+    <a class="row reveal" style="animation-delay:460ms" href="https://email-outreach.taigaprojects.space">
+      <span class="num">07</span>
+      <span>
+        <span class="name">Email Outreach</span>
+        <span class="desc">Write, send and follow up without the enterprise bloat.</span>
+      </span>
+      <span class="slug">email-outreach <span class="arrow">→</span></span>
     </a>
 
-    <a class="card reveal" style="animation-delay:600ms" href="https://shop.taigaprojects.space">
-      <span class="card-idx">08</span>
-      <h2>Shop</h2>
-      <p>A storefront without the usual checkout friction.</p>
-      <span class="card-host">shop<span class="arrow">→</span></span>
+    <a class="row reveal" style="animation-delay:500ms" href="https://shop.taigaprojects.space">
+      <span class="num">08</span>
+      <span>
+        <span class="name">Shop</span>
+        <span class="desc">A storefront without the usual checkout friction.</span>
+      </span>
+      <span class="slug">shop <span class="arrow">→</span></span>
     </a>
 
   </div>
-
-  <footer class="reveal" style="animation-delay:660ms">
-    Built and maintained by hand.
-  </footer>
 </main>
+
+<footer class="taiga-footer">
+  <span class="made">Built and maintained by hand.</span>
+  <a class="home" href="https://www.taigaprojects.space">taigaprojects.space</a>
+</footer>
 
 </body>
 </html>
