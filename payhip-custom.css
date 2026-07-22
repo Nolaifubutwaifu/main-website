@@ -1,0 +1,140 @@
+/* ═══════════════════════════════════════════════════════════════
+   Taiga "Golden Hour" restyle for the Payhip shop
+   (Max's Photography Store — shop.taigaprojects.space)
+
+   HOW TO APPLY — nothing here changes functionality, only styling:
+   1. Payhip dashboard → your store → "Edit store design"
+   2. Open the store settings → Advanced → "Custom CSS"
+      (this fills the empty <style id="store-page-custom-css-style-tag">
+       tag that already exists on your storefront)
+   3. Paste this whole file in and save.
+
+   Every buy button, cart, search and checkout keeps working exactly
+   as before — this only overrides fonts, colours and spacing so the
+   store matches taigaprojects.space. Values mirror taiga-tokens.css.
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* ── Page + section backgrounds → warm paper ───────────────────── */
+body[data-default-color-scheme-id="whitePrimary"],
+.section-wrapper[data-section-setting-color-scheme-id="whitePrimary"] .section-background {
+  background-color: #FBF7F0 !important;
+}
+.global-background-image { background: #FBF7F0 !important; }
+
+/* ── Body copy → Hanken Grotesk on warm ink ────────────────────── */
+body {
+  font-family: 'Hanken Grotesk', system-ui, -apple-system, sans-serif !important;
+  color: #221A12 !important;
+}
+
+/* ── Headings, store title, product names → Libre Caslon Display ── */
+h1, h2, h3, h4,
+.font-section-header-title,
+.font-section-collection-productName,
+.card__heading,
+.card__heading a,
+.font-section-product-name {
+  font-family: 'Libre Caslon Display', Georgia, 'Times New Roman', serif !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+  color: #221A12 !important;
+}
+#header .header-title-text a { color: #221A12 !important; }
+
+/* ── Nav → mono, like the home-page slugs ──────────────────────── */
+#header nav.header-nav-list a {
+  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  font-size: 0.9rem !important;
+  color: #221A12 !important;
+}
+#header nav.header-nav-list a.active { color: #A8521F !important; }
+#header .header-actions-action svg,
+#header .header-actions-action svg path { color: #221A12 !important; fill: #221A12 !important; }
+
+/* ── Prices → amber mono accent ────────────────────────────────── */
+.font-section-collection-productPrice,
+.price-item--regular,
+.font-section-product-price .value {
+  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  color: #A8521F !important;
+}
+
+/* ── Primary actions (Buy / Add to cart / Checkout / Follow) → amber */
+.section-wrapper button.btn-primary,
+.section-wrapper a.btn-primary,
+#header a.btn-primary,
+.cart-block .cart-checkout-button,
+.nav-mobile-block .cta-button-wrapper .btn-primary,
+.btn-primary {
+  background-color: #E07A3C !important;
+  border-color: #E07A3C !important;
+  color: #FBF7F0 !important;
+  border-radius: 4px !important;
+}
+.section-wrapper .btn-primary:not(:disabled):hover,
+.section-wrapper .btn-primary:not(:disabled):active,
+.section-wrapper .btn-primary:not(:disabled):focus,
+.cart-block .cart-checkout-button:not(:disabled):hover,
+.btn-primary:not(:disabled):hover {
+  background-color: #C8642B !important;
+  border-color: #C8642B !important;
+  color: #FBF7F0 !important;
+}
+.btn-primary:focus { box-shadow: 0 0 0 0.2rem rgba(224, 122, 60, 0.45) !important; }
+
+/* ── Secondary / light buttons → warm outline ──────────────────── */
+.section-wrapper a.btn-secondary,
+.section-wrapper button.btn-secondary,
+.section-wrapper a.btn-light,
+.section-wrapper button.btn-light {
+  background-color: #FBF7F0 !important;
+  border-color: #C3AC92 !important;
+  color: #221A12 !important;
+}
+
+/* ── Text links + selection ────────────────────────────────────── */
+.section-wrapper a:not(.btn):not(.does-not-use-regular-link-color) { color: #C8642B !important; }
+::selection { background: #FBE4CF; color: #221A12; }
+
+/* ── Product cards → warm border, gentle lift ──────────────────── */
+.product-card-wrapper .card__media,
+.product-card-wrapper .card__inner {
+  border: 1px solid #DDCDB8 !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  transition: box-shadow .22s cubic-bezier(.22,.61,.36,1),
+              transform .22s cubic-bezier(.22,.61,.36,1);
+}
+.product-card-wrapper:hover .card__media,
+.product-card-wrapper:hover .card__inner {
+  box-shadow: 0 18px 44px rgba(34, 26, 18, 0.16) !important;
+  transform: translateY(-4px);
+}
+/* Warm-tint the "no image" placeholder box (e.g. Lightroom tutoring) */
+.section-wrapper[data-section-setting-color-scheme-id="whitePrimary"] .custom-style-color-placeholder-background {
+  background-color: rgba(224, 122, 60, 0.10) !important;
+}
+
+/* ── "About me" band → warm ink-50 instead of cold grey ────────── */
+.section-wrapper[data-section-setting-color-scheme-id="lightPrimary"] .section-background {
+  background-color: #F6F0E7 !important;
+}
+.section-wrapper[data-section-setting-color-scheme-id="lightPrimary"] h1,
+.section-wrapper[data-section-setting-color-scheme-id="lightPrimary"] h2,
+.section-wrapper[data-section-setting-color-scheme-id="lightPrimary"] h3,
+.section-wrapper[data-section-setting-color-scheme-id="lightPrimary"] h4 { color: #221A12 !important; }
+
+/* ── Footer → dark ink, like the main site's footer ────────────── */
+.section-wrapper[data-section-key="footer"] .section-background {
+  background-color: #17120E !important;
+}
+.section-wrapper[data-section-key="footer"] .powered-by-payhip-wrapper,
+.section-wrapper[data-section-key="footer"] .powered-by-payhip-wrapper .custom-style-color-text-regular {
+  color: #ECE2D4 !important;
+}
+.section-wrapper[data-section-key="footer"] a { color: #F4B582 !important; }
+
+/* ── Focus ring → amber (accessibility, keeps keyboard nav clear) ─ */
+:focus-visible { outline: 3px solid rgba(224, 122, 60, 0.45) !important; outline-offset: 2px; }

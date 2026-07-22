@@ -231,17 +231,20 @@
            The Payhip script at the bottom of the page turns every
            .payhip-buy-button into a working checkout overlay — the
            styling here (.taiga-btn) is all that changes.
+           Products below mirror the live Payhip store; adjust blurbs to taste.
            ───────────────────────────────────────────────────────── -->
 
       <article class="card reveal" style="animation-delay:240ms">
-        <span class="cover"><span class="glyph">01</span></span>
+        <span class="cover">
+          <img src="https://payhip.com/cdn-cgi/image/format=auto,width=750/https://pe56d.s3.amazonaws.com/o_1jsnssjq41f651d8aco3167jmf71c.png" alt="guide1 cover" />
+        </span>
         <div class="body">
-          <span class="name">Product One</span>
-          <span class="desc">A short, honest line about what this is and why it's worth it.</span>
+          <span class="name">guide1</span>
+          <span class="desc">A practical photography guide — the one to start with.</span>
           <div class="foot">
-            <span class="price">$9</span>
+            <span class="price">$27</span>
             <a class="payhip-buy-button taiga-btn" data-theme="none"
-               href="https://payhip.com/b/PRODUCT_KEY_1" data-product="PRODUCT_KEY_1">
+               href="https://payhip.com/b/3eCix" data-product="3eCix">
               Buy now
             </a>
           </div>
@@ -249,30 +252,15 @@
       </article>
 
       <article class="card reveal" style="animation-delay:280ms">
-        <span class="cover"><span class="glyph">02</span></span>
+        <span class="cover"><span class="glyph">Lr</span></span>
         <div class="body">
-          <span class="name">Product Two</span>
-          <span class="desc">A short, honest line about what this is and why it's worth it.</span>
+          <span class="name">Lightroom tutoring</span>
+          <span class="desc">One-on-one editing sessions to get your Lightroom workflow dialled in.</span>
           <div class="foot">
-            <span class="price">$19</span>
+            <span class="price">$50</span>
             <a class="payhip-buy-button taiga-btn" data-theme="none"
-               href="https://payhip.com/b/PRODUCT_KEY_2" data-product="PRODUCT_KEY_2">
+               href="https://payhip.com/b/Lh0g2" data-product="Lh0g2">
               Buy now
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <article class="card reveal" style="animation-delay:320ms">
-        <span class="cover"><span class="glyph">03</span></span>
-        <div class="body">
-          <span class="name">Product Three</span>
-          <span class="desc">A short, honest line about what this is and why it's worth it.</span>
-          <div class="foot">
-            <span class="price">$5<span class="cadence"> / mo</span></span>
-            <a class="payhip-buy-button taiga-btn" data-theme="none"
-               href="https://payhip.com/b/PRODUCT_KEY_3" data-product="PRODUCT_KEY_3">
-              Subscribe
             </a>
           </div>
         </div>
@@ -281,9 +269,11 @@
     </div>
 
     <p class="shop-note reveal" style="animation-delay:360ms">
-      These three cards are placeholders. Swap each <code>PRODUCT_KEY</code> for a
-      real Payhip product key (and update the name, blurb and price) to go live —
-      the checkout, cart and receipts keep working unchanged.
+      Wired to the live Payhip products (<code>guide1</code> and
+      <code>Lightroom&nbsp;tutoring</code>). Checkout, cart and receipts run on
+      Payhip unchanged — this page only changes the styling. Add more items by
+      copying one <code>&lt;article class="card"&gt;</code> block above and setting
+      its Payhip product key.
     </p>
   </div>
 </main>
