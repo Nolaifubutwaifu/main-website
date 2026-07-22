@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shop — Taiga Projects</title>
+<meta name="description" content="Things worth paying for — kept small, kept honest. Checkout runs on Payhip." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2317120E'/><text y='.9em' font-size='88' x='50%25' text-anchor='middle' fill='%23E07A3C' font-family='Georgia,serif'>T</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="taiga-tokens.css" />
+<style>
+  /* ── hero (mirrors the home page hero) ────────────────── */
+  .hero {
+    background: var(--ink-950);
+    color: var(--ink-50);
+    padding: 84px var(--gutter) 72px;
+  }
+  .hero-inner { max-width: var(--container); margin: 0 auto; }
+
+  .hero .domain {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--amber-300);
+    margin-bottom: 30px;
+  }
+
+  .hero h1 {
+    font-size: var(--text-5xl);
+    line-height: 1.02;
+    margin: 0 0 20px;
+    color: var(--ink-50);
+  }
+  .hero h1 em { color: var(--amber-400); font-style: italic; }
+
+  .hero .lead {
+    font-size: var(--text-lg);
+    line-height: 1.5;
+    color: var(--ink-200);
+    max-width: 52ch;
+  }
+
+  /* ── shop grid ────────────────────────────────────────── */
+  .shop {
+    background: var(--paper);
+    padding: 64px var(--gutter) 80px;
+  }
+  .shop-inner { max-width: var(--container); margin: 0 auto; }
+
+  .shop-eyebrow { margin-bottom: 28px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  /* ── product card ─────────────────────────────────────── */
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform var(--dur-base) var(--ease-out),
+                box-shadow var(--dur-base) var(--ease-out),
+                border-color var(--dur-base) var(--ease-out);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--border-strong);
+  }
+
+  /* Cover: a real <img> drops in over this warm placeholder wash. */
+  .card .cover {
+    aspect-ratio: 4 / 3;
+    background:
+      radial-gradient(120% 120% at 20% 0%, var(--amber-300) 0%, transparent 55%),
+      linear-gradient(140deg, var(--ink-800), var(--ink-950));
+    display: block;
+    position: relative;
+  }
+  .card .cover img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .card .cover .glyph {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    color: var(--amber-300);
+    opacity: 0.9;
+  }
+
+  .card .body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px 24px 26px;
+    flex: 1;
+  }
+
+  .card .name {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    letter-spacing: var(--tracking-tight);
+    color: var(--ink-900);
+  }
+
+  .card .desc {
+    font-size: var(--text-sm);
+    line-height: var(--lh-normal);
+    color: var(--text-secondary);
+    flex: 1;
+  }
+
+  .card .foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .card .price {
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+    color: var(--ink-900);
+    white-space: nowrap;
+  }
+  .card .price .cadence {
+    font-size: var(--text-2xs);
+    color: var(--text-muted);
+  }
+
+  /* Payhip renders its own <a>; we only style it. data-theme="none"
+     tells Payhip to keep the checkout behaviour but not inject its
+     own button skin — so .taiga-btn (from taiga-tokens.css) wins. */
+  .card .payhip-buy-button.taiga-btn {
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1;
+  }
+  .card .payhip-buy-button.taiga-btn:hover { text-decoration: none; }
+
+  /* ── empty / helper note ──────────────────────────────── */
+  .shop-note {
+    margin-top: 44px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+  .shop-note code {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--amber-700);
+    background: var(--accent-soft);
+    padding: 2px 6px;
+    border-radius: var(--radius-xs);
+  }
+
+  /* ── responsive (same breakpoints as the home page) ───── */
+  @media (max-width: 980px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 720px) {
+    .hero { padding: 56px var(--gutter) 48px; }
+    .hero h1 { font-size: var(--text-3xl); }
+    .hero .lead { font-size: var(--text-md); }
+    .shop { padding: 44px var(--gutter) 60px; }
+    .grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  /* ── entrance (shared with the home page) ─────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rise var(--dur-slow) var(--ease-out) forwards;
+  }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+
+<!-- Shared chrome — identical on every subdomain (see taiga-tokens.css). -->
+<header class="taiga-header on-dark">
+  <div class="taiga-brand">
+    <a href="https://www.taigaprojects.space"><span class="wordmark">Taiga</span></a>
+    <span class="rule"></span>
+    <span class="crumb">shop</span>
+  </div>
+  <nav class="taiga-nav">
+    <a class="back" href="https://www.taigaprojects.space">← all projects</a>
+    <span class="taiga-chip">secure checkout by Payhip</span>
+  </nav>
+</header>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="domain reveal" style="animation-delay:40ms">shop.taigaprojects.space</div>
+    <h1 class="reveal" style="animation-delay:100ms">The <em>Shop</em></h1>
+    <p class="lead reveal" style="animation-delay:160ms">
+      A storefront without the usual checkout friction. A handful of things worth
+      paying for — kept small, kept honest. Checkout, downloads and receipts all
+      run on Payhip.
+    </p>
+  </div>
+</header>
+
+<main class="shop">
+  <div class="shop-inner">
+    <div class="eyebrow shop-eyebrow reveal" style="animation-delay:200ms">Available now</div>
+
+    <div class="grid">
+
+      <!-- ─────────────────────────────────────────────────────────
+           ADD A PRODUCT: copy one <article class="card"> block below.
+           1. Set the Payhip product KEY in BOTH `href` (…/b/KEY) and
+              `data-product="KEY"` — find it in your Payhip product URL.
+           2. Change the name, blurb and price.
+           3. Optional: drop a real cover image in .cover:
+                <span class="cover"><img src="cover.jpg" alt=""></span>
+              (delete the <span class="glyph"> line when you do).
+           The Payhip script at the bottom of the page turns every
+           .payhip-buy-button into a working checkout overlay — the
+           styling here (.taiga-btn) is all that changes.
+           ───────────────────────────────────────────────────────── -->
+
+      <article class="card reveal" style="animation-delay:240ms">
+        <span class="cover"><span class="glyph">01</span></span>
+        <div class="body">
+          <span class="name">Product One</span>
+          <span class="desc">A short, honest line about what this is and why it's worth it.</span>
+          <div class="foot">
+            <span class="price">$9</span>
+            <a class="payhip-buy-button taiga-btn" data-theme="none"
+               href="https://payhip.com/b/PRODUCT_KEY_1" data-product="PRODUCT_KEY_1">
+              Buy now
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal" style="animation-delay:280ms">
+        <span class="cover"><span class="glyph">02</span></span>
+        <div class="body">
+          <span class="name">Product Two</span>
+          <span class="desc">A short, honest line about what this is and why it's worth it.</span>
+          <div class="foot">
+            <span class="price">$19</span>
+            <a class="payhip-buy-button taiga-btn" data-theme="none"
+               href="https://payhip.com/b/PRODUCT_KEY_2" data-product="PRODUCT_KEY_2">
+              Buy now
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal" style="animation-delay:320ms">
+        <span class="cover"><span class="glyph">03</span></span>
+        <div class="body">
+          <span class="name">Product Three</span>
+          <span class="desc">A short, honest line about what this is and why it's worth it.</span>
+          <div class="foot">
+            <span class="price">$5<span class="cadence"> / mo</span></span>
+            <a class="payhip-buy-button taiga-btn" data-theme="none"
+               href="https://payhip.com/b/PRODUCT_KEY_3" data-product="PRODUCT_KEY_3">
+              Subscribe
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="shop-note reveal" style="animation-delay:360ms">
+      These three cards are placeholders. Swap each <code>PRODUCT_KEY</code> for a
+      real Payhip product key (and update the name, blurb and price) to go live —
+      the checkout, cart and receipts keep working unchanged.
+    </p>
+  </div>
+</main>
+
+<footer class="taiga-footer">
+  <span class="made">Built and maintained by hand.</span>
+  <a class="home" href="https://www.taigaprojects.space">taigaprojects.space</a>
+</footer>
+
+<!-- Payhip checkout. This single script powers every .payhip-buy-button
+     above: clicking one opens Payhip's secure checkout overlay, so all
+     of the shop's original functionality is preserved. -->
+<script src="https://payhip.com/payhip.js" type="text/javascript"></script>
+
+</body>
+</html>
