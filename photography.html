@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Photography — Taiga Projects</title>
+<meta name="description" content="Stills by Max. Coming soon." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2317120E'/><text y='.9em' font-size='88' x='50%25' text-anchor='middle' fill='%23E07A3C' font-family='Georgia,serif'>T</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="taiga-tokens.css" />
+<style>
+  /* Coming-soon page. Shares tokens with the home page; the nav/footer
+     match index.html so the site reads as one place. Swap the body copy
+     and lift the "coming soon" state once there's real work to show. */
+  body { background: var(--ink-950); min-height: 100vh; display: flex; flex-direction: column; }
+
+  .site-nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px; padding: 0 clamp(20px, 5vw, 56px);
+    background: rgba(23, 18, 14, 0.72);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-inverse);
+  }
+  .site-nav .wordmark {
+    font-family: var(--font-display); font-size: 22px;
+    color: var(--ink-50); letter-spacing: -0.02em; text-decoration: none;
+  }
+  .site-nav .wordmark em { font-style: italic; color: var(--amber-400); }
+  .site-nav .back {
+    font-family: var(--font-mono); font-size: var(--text-xs);
+    color: var(--ink-200); text-decoration: none;
+    transition: color var(--dur-base) var(--ease-out);
+  }
+  .site-nav .back:hover { color: var(--amber-400); }
+
+  main {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 80px clamp(20px, 5vw, 56px);
+  }
+  /* golden-hour placeholder wash */
+  main::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(120% 90% at 30% 10%, rgba(227,162,60,0.42) 0%, rgba(168,82,31,0.18) 34%, transparent 62%),
+      linear-gradient(178deg, #2E2418 0%, #17120E 100%);
+    animation: drift 26s var(--ease-out) infinite alternate;
+  }
+  @keyframes drift { from { transform: scale(1.05); } to { transform: scale(1.14); } }
+  main::after {
+    content: "";
+    position: absolute; inset: 0;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .soon {
+    position: relative;
+    max-width: 620px;
+    text-align: center;
+  }
+  .soon .kicker {
+    font-family: var(--font-mono); font-size: var(--text-xs);
+    letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--amber-300); margin-bottom: 22px;
+  }
+  .soon h1 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(40px, 8vw, 76px); line-height: 1;
+    letter-spacing: -0.02em; color: var(--ink-50); margin: 0 0 22px;
+  }
+  .soon h1 em { font-style: italic; color: var(--amber-400); }
+  .soon p {
+    font-size: var(--text-lg); line-height: 1.55;
+    color: var(--ink-200); margin: 0 auto 34px; max-width: 46ch;
+  }
+  .soon .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .soon .btn-ghost {
+    font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 700;
+    color: var(--ink-50); border: 1px solid var(--border-inverse);
+    padding: 13px 24px; border-radius: var(--radius-sm); text-decoration: none;
+    transition: border-color var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
+  }
+  .soon .btn-ghost:hover { border-color: var(--amber-400); background: rgba(246,240,231,0.05); color: var(--ink-50); }
+
+  .site-footer {
+    background: var(--ink-950); border-top: 1px solid var(--border-inverse);
+    padding: 26px clamp(20px, 5vw, 56px);
+    display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center;
+  }
+  .site-footer a { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--amber-400); text-decoration: none; }
+  .site-footer .colophon { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--ink-400); }
+
+  @media (prefers-reduced-motion: reduce) {
+    main::before { animation: none; transform: scale(1.1); }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="wordmark" href="/">Taiga <em>Projects</em></a>
+  <a class="back" href="/">← home</a>
+</nav>
+
+<main>
+  <div class="soon">
+    <div class="kicker">Photography</div>
+    <h1>Still <em>developing</em>.</h1>
+    <p>The photo work is being gathered and sequenced. Check back soon — or come see the software I've been building in the meantime.</p>
+    <div class="actions">
+      <a class="btn-ghost" href="/#projects">See the projects</a>
+      <a class="btn-ghost" href="https://shop.taigaprojects.space">Visit the shop</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <a href="https://instagram.com/_maxilol_">@_maxilol_</a>
+  <span class="colophon">Taiga Projects · built and maintained by hand</span>
+</footer>
+
+</body>
+</html>
